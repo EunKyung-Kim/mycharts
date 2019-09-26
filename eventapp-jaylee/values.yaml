@@ -3,6 +3,6 @@
 # Declare variables to be passed into your templates.
 
 UserName: jaylee
-getstatedtag: 1.0
+getstartedtag: 1.0
 frontwebtag: 1.0
 nodePort: 32015
