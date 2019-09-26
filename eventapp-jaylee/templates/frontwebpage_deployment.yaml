@@ -1,17 +1,17 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: "frontwebpage-{{ .Values.UserName }}"
+  name: "frontwebpage-{{ .Values.username }}"
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: "frontwebpage-{{ .Values.UserName }}"
+        app: "frontwebpage-{{ .Values.username }}"
     spec:
       containers:
-      - name: "frontwebpage-{{ .Values.UserName }}"
-        image: "de.icr.io/cr-namespace-{{ .Values.UserName }}/frontwebpage:{{ .Values.frontwebtag }}"
+      - name: "frontwebpage-{{ .Values.username }}"
+        image: "de.icr.io/cr-namespace-{{ .Values.username }}/frontwebpage:{{ .Values.frontwebtag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -32,10 +32,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: "frontwebpage-svc-{{ .Values.UserName }}"
+  name: "frontwebpage-svc-{{ .Values.username }}"
 spec:
   selector:
-    app: "frontwebpage-{{ .Values.UserName }}"
+    app: "frontwebpage-{{ .Values.username }}"
   type: NodePort
   ports:
   - port: 80
