@@ -3,11 +3,11 @@ entries:
   eventapp-jaylee:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-09-26T12:01:43.88068+09:00"
+    created: "2019-09-26T14:17:18.90941+09:00"
     description: A Helm chart for Kubernetes
-    digest: 77f4c6c773f12de5de3ecc1a749f180b0b398ec7ec1e152dbdf3bf4dd8de9b5f
+    digest: 1d86bd26b42b981066a8758c0b728fee17e6ad5c372295cd8aa8a5fffcdf941f
     name: eventapp-jaylee
     urls:
     - https://cloudclass-jaylee.github.io/mycharts/eventapp-jaylee-0.1.0.tgz
     version: 0.1.0
-generated: "2019-09-26T12:01:43.879562+09:00"
+generated: "2019-09-26T14:17:18.906811+09:00"
