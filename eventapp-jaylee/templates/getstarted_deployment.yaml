@@ -45,7 +45,7 @@ metadata:
 spec:
   selector:
     app: "getstartedjava-{{ .Values.username }}"
-  type: nodePort
+  type: NodePort
   ports:
   - port: 9080
     targetPort: 9080
