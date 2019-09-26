@@ -1,24 +1,24 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: getstartedjava-{{ .Values.UserName }}
+  name: "getstartedjava-{{ .Values.UserName }}"
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: getstartedjava-{{ .Values.UserName }}
+        app: "getstartedjava-{{ .Values.UserName }}"
       annotations:
         sidecar.istio.io/inject: "true"
     spec:
       containers:
-      - name: getstartedjava-{{ .Values.UserName }}
-        image: de.icr.io/cr-namespace-{{ .Values.UserName }}/getstartedjava:{{ .Values.getstartedtag }}
+      - name: "getstartedjava-{{ .Values.UserName }}"
+        image: "de.icr.io/cr-namespace-{{ .Values.UserName }}/getstartedjava:{{ .Values.getstartedtag }}"
         env:
           - name: VERSION
             value: "1"
           - name: CLOUDANT_URL
-            value: http://cloudant-service-{{ .Values.UserName }}:80
+            value: "http://cloudant-service-{{ .Values.UserName }}:80"
           - name: dbUsername
             valueFrom:
               secretKeyRef:
@@ -41,14 +41,14 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: getstartedjava-{{ .Values.UserName }}
+  name: "getstartedjava-{{ .Values.UserName }}"
 spec:
   selector:
-    app: getstartedjava-{{ .Values.UserName }}
+    app: "getstartedjava-{{ .Values.UserName }}"
   type: nodePort
   ports:
   - port: 9080
     targetPort: 9080
     protocol: TCP
     name: http
-    nodePort: {{ .Values.nodePort }}
+    nodePort: "{{ .Values.nodePort }}"

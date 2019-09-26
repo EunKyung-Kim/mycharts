@@ -1,9 +1,9 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: {{ .Values.UserName }}-pv
+  name: "{{ .Values.UserName }}-pv"
   labels:
-    app: getstartedjava-{{ .Values.UserName }}
+    app: "getstartedjava-{{ .Values.UserName }}"
 spec:
   capacity:
     storage: 1Gi
@@ -17,7 +17,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: cloudant-pvc-{{ .Values.UserName }}
+  name: "cloudant-pvc-{{ .Values.UserName }}"
 spec:
   accessModes:
     - ReadWriteOnce
@@ -30,9 +30,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cloudant-service-{{ .Values.UserName }}
+  name: "cloudant-service-{{ .Values.UserName }}"
   labels:
-    app: getstartedjava-{{ .Values.UserName }}
+    app: "getstartedjava-{{ .Values.UserName }}"
 spec:
   type: NodePort
   ports:
@@ -40,24 +40,24 @@ spec:
       targetPort: 80
       name: http
   selector:
-    name: cloudant-deployment-{{ .Values.UserName }}
+    name: "cloudant-deployment-{{ .Values.UserName }}"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: cloudant-deployment-{{ .Values.UserName }}
+  name: "cloudant-deployment-{{ .Values.UserName }}"
   labels:
-    app: getstartedjava-{{ .Values.UserName }}
+    app: "getstartedjava-{{ .Values.UserName }}"
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: cloudant-deployment-{{ .Values.UserName }}
+        name: "cloudant-deployment-{{ .Values.UserName }}"
         version: v1
     spec:
       containers:
-      - name: cloudant-db-{{ .Values.UserName }}
+      - name: "cloudant-db-{{ .Values.UserName }}"
         image: ibmcom/cloudant-developer:1.0.1
         imagePullPolicy: IfNotPresent
         env:
@@ -78,9 +78,9 @@ spec:
         ports:
           - containerPort: 80
         volumeMounts:
-        - name: {{ .Values.UserName }}-pv
+        - name: "{{ .Values.UserName }}-pv"
           mountPath: /srv
       volumes:
-        - name: {{ .Values.UserName }}-pv
+        - name: "{{ .Values.UserName }}-pv"
           persistentVolumeClaim:
-            claimName: cloudant-pvc-{{ .Values.UserName }}
+            claimName: "cloudant-pvc-{{ .Values.UserName }}"
