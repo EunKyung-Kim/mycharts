@@ -27,7 +27,7 @@ spec:
             memory: 300Mi
         env:
         - name: API_URL
-          value: "http://159.8.221.196:{{ .Values.nodePort }}"
+          value: "http://159.8.221.196:{{ .Values.nodeport }}"
 ---
 kind: Service
 apiVersion: v1

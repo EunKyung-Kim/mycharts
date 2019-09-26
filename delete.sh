@@ -6,4 +6,4 @@ kubectl delete service/frontwebpage-svc-jaylee
 kubectl delete service/getstartedjava-jaylee
 kubectl delete pvc/cloudant-pvc-jaylee
 kubectl delete pv/jaylee-pv
-
+helm delete eventapp-jaylee --purge
